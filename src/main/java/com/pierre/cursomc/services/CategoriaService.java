@@ -2,13 +2,11 @@ package com.pierre.cursomc.services;
 
 import java.util.Optional;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pierre.cursomc.domain.Categoria;
 import com.pierre.cursomc.repositories.CategoriaRepository;
-
 import com.pierre.cursomc.services.exceptions.ObjectNotfoundException;
 @Service
 public class CategoriaService {
@@ -21,5 +19,9 @@ public class CategoriaService {
 		return obj.orElseThrow(() -> new ObjectNotfoundException(
 			"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 		}
-
+        
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
 }
