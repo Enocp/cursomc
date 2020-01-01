@@ -21,7 +21,7 @@ public class PedidoResource {
 	private PedidoService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) throws Throwable {
+	public ResponseEntity<Pedido> find(@PathVariable Integer id) throws Throwable {
 		Pedido obj = service.find(id);
 				       
 		return ResponseEntity.ok().body(obj);
