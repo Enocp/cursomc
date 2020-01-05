@@ -2,13 +2,13 @@ package com.pierre.cursomc.resources.exception;
 
 import java.io.Serializable;
 
-public class StandreError implements Serializable{
+public class StandardError implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer status;
 	private String msg;
 	private long timeStamp;
-	public StandreError(Integer status, String msg, long timeStamp) {
+	public StandardError(Integer status, String msg, long timeStamp) {
 		super();
 		this.status = status;
 		this.msg = msg;
