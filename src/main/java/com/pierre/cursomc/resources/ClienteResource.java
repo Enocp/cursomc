@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.pierre.cursomc.domain.Categoria;
 import com.pierre.cursomc.domain.Cliente;
 import com.pierre.cursomc.dto.ClienteDTO;
 import com.pierre.cursomc.dto.ClienteNewDTO;
