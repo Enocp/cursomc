@@ -17,10 +17,9 @@ public class MockEmailService extends AbstractEmailService{
 	}
 	@Override
 	public void sendHtmlEmail(MimeMessage msg) {
-		LOG.info("Simulando envio de email Html..");	
+		LOG.info("Simulando envio de email HTML...");
 		LOG.info(msg.toString());
-		LOG.info("Email enviado");	
-		
+		LOG.info("Email enviado");
 	}
 
 }
