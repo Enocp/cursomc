@@ -23,15 +23,19 @@ import com.pierre.cursomc.repositories.ClienteRepository;
 import com.pierre.cursomc.repositories.EnderecoRepository;
 import com.pierre.cursomc.services.exceptions.DataIntegrityException;
 import com.pierre.cursomc.services.exceptions.ObjectNotfoundException;
+
 @Service
 public class ClienteService {
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
+	
 	@Autowired
 	private ClienteRepository repo;
+	
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
@@ -77,8 +81,7 @@ public class ClienteService {
 		//return new Cliente(objDto.getId(), objDto.getNome());
 		//throw new UnsupportedOperationException();
 		
-		return new Cliente(objDto.getId(),objDto.getNome(),objDto.getEmail(),null, null,null);
-	}
+		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null);	}
 	
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setNome(obj.getNome());
