@@ -2,6 +2,7 @@ package com.pierre.cursomc.services;
 
 import java.util.Date;
 
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -11,11 +12,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import com.pierre.cursomc.domain.Pedido;
-
+//@Service
 public abstract class AbstractEmailService implements EmailService {
 	@Value("defualt.sender")
 	private String sender ;

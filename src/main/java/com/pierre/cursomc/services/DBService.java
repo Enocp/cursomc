@@ -121,9 +121,14 @@ public class DBService {
 		Cliente cli1 = new Cliente(null, "maria silva","pierre.enoc28@gmail.com","36378912377",TipoCliente.PESSOAFISICA,pe.encode("marcia-82"));
         cli1.getTelefone().addAll(Arrays.asList("27633323","93838393"));
         
-		Cliente cli2 = new Cliente(null, "pietra silva","pierre.enoc@gmail.com","687.177.570-61",TipoCliente.PESSOAFISICA,pe.encode("marcia-82"));
-        cli1.getTelefone().addAll(Arrays.asList("35633323","93638393"));
+		Cliente cli2 = new Cliente(null, "ana Costa","pierre.enoc@gmail.com","687.177.570-61",TipoCliente.PESSOAFISICA,pe.encode("marcia-82"));
+        cli2.getTelefone().addAll(Arrays.asList("35633323","93638393"));
 		cli2.addPerfil(Perfil.ADMIN);
+		
+
+		Cliente cli3 = new Cliente(null, "pierre Costa","pierre_enoc@yahoo.fr","135.485.590-69",TipoCliente.PESSOAFISICA,pe.encode("123"));
+        cli3.getTelefone().addAll(Arrays.asList("23633323","97638393"));
+		cli3.addPerfil(Perfil.ADMIN);
 		
         Endereco e1 = new Endereco(null,"Rua Flores","300","Ap 303","Jardim","38220834",cli1,c1);
         Endereco e2 = new Endereco(null,"Av Matos","105","sala 800","centro","38220834",cli1,c2);
@@ -131,9 +136,10 @@ public class DBService {
 
         cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
         cli2.getEnderecos().addAll(Arrays.asList(e3));
+        cli3.getEnderecos().addAll(Arrays.asList(e3));
 
         
-        clienteRepository.saveAll(Arrays.asList(cli1,cli2));
+        clienteRepository.saveAll(Arrays.asList(cli1,cli2,cli3));
         enderecoRepository.saveAll(Arrays.asList(e1,e2,e3));
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");

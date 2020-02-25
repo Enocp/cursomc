@@ -12,12 +12,14 @@ import com.pierre.cursomc.services.EmailService;
 import com.pierre.cursomc.services.MockEmailService;
 
 
-@Configuration
-@Profile("test")
-public class TestConfig {
-@Autowired
+	@Configuration
+	@Profile("test")
+	public class TestConfig {
+  
+   @Autowired
    private DBService dbService;	
-	@Bean
+	
+    @Bean
 	public boolean instantiateDataBase () throws ParseException {
 		dbService.instatiateTestDataBase();
 		return true;
