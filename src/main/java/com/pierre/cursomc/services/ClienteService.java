@@ -1,10 +1,12 @@
 package com.pierre.cursomc.services;
 
+import java.awt.image.BufferedImage;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,7 +23,6 @@ import com.pierre.cursomc.domain.enums.Perfil;
 import com.pierre.cursomc.domain.enums.TipoCliente;
 import com.pierre.cursomc.dto.ClienteDTO;
 import com.pierre.cursomc.dto.ClienteNewDTO;
-import com.pierre.cursomc.repositories.CidadeRepository;
 import com.pierre.cursomc.repositories.ClienteRepository;
 import com.pierre.cursomc.repositories.EnderecoRepository;
 import com.pierre.cursomc.security.UserSS;
@@ -39,13 +40,17 @@ public class ClienteService {
 	private ClienteRepository repo;
 
 	@Autowired
-	private CidadeRepository cidadeRepository;
-
-	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
 	@Autowired
 	private S3Service s3Service;
+	
+	@Autowired
+	private ImageService imageService;
+
+	@Value("${img.prefix.client.profile}")
+	private String prefix;
+
 
 
 	public Cliente find(Integer id) {
@@ -126,12 +131,11 @@ public class ClienteService {
 			throw new AuthorizationException("Acesso negado");
 		}
 		
-		 URI uri = s3Service.uploadFile(multipartFile);
-		 Cliente cli = find(user.getId());
-		 cli.setImageUrl(uri.toString());
-		 repo.save(cli);
-		 
-		 
-		 return uri;
+		BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
+		String fileName = prefix + user.getId() + ".jpg";
+		
+		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
+
+
 	}
 }
